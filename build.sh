@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 cd ~
 
 # download android tools if not present
@@ -57,6 +57,12 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 ' > ~/android/lineage/.repo/local_manifests/dm3q.xml
 
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+
+rm -rf ~/android/lineage/kernel/samsung/sm8550-modules/Android.bp
+
+echo 'soong_namespace {
+    imports: ["kernel/samsung/sm8550"]
+}' > ~/android/lineage/kernel/samsung/sm8550-modules/Android.bp
 
 source build/envsetup.sh
 breakfast lineage_dm3q-userdebug
