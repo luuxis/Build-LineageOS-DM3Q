@@ -17,6 +17,7 @@ wget http://archive.ubuntu.com/ubuntu/pool/universe/n/ncurses/libncurses5_6.4-2_
 
 mkdir -p ~/bin
 mkdir -p ~/android/lineage
+mkdir -p ~/.cache/ccache/tmp
 
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
@@ -27,9 +28,6 @@ git config --global user.email "luuxis8215@gmail.com"
 git config --global user.name "Luuxis"
 
 git lfs install
-
-export USE_CCACHE=1
-export CCACHE_EXEC=/usr/bin/ccache
 
 
 cd ~/android/lineage
@@ -63,6 +61,9 @@ rm -rf ~/android/lineage/kernel/samsung/sm8550-modules/Android.bp
 echo 'soong_namespace {
     imports: ["kernel/samsung/sm8550"]
 }' > ~/android/lineage/kernel/samsung/sm8550-modules/Android.bp
+
+export USE_CCACHE=1
+export CCACHE_EXEC=/usr/bin/ccache
 
 source build/envsetup.sh
 breakfast lineage_dm3q-userdebug
