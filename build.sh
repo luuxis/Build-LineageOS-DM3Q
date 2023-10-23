@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 cd ~
 
 # download android tools if not present
