@@ -38,20 +38,22 @@ repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 mkdir -p ~/android/lineage/.repo/local_manifests/
 echo '<?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote name="samsung-8550" fetch="https://github.com/chaptsand" sync-c="true" sync-tags="false" revision="lineage-20" />
+  <remote name="chaptsand" fetch="https://github.com/chaptsand" sync-c="true" sync-tags="false" revision="lineage-20" />
+  <remote name="samsung-8550-dev" fetch="https://github.com/samsung-sm8550-dev" sync-c="true" sync-tags="false" revision="lineage-20" />
   
-  <project name="android_device_samsung_dm3q" path="device/samsung/dm3q" remote="samsung-8550"/>
-  <project name="android_device_samsung_sm8550-common" path="device/samsung/sm8550-common" remote="samsung-8550"/>
-  <project name="android_device_samsung_dm3q-kernel" path="device/samsung/dm3q-kernel" remote="samsung-8550"/>
+  <project name="android_device_samsung_dm3q" path="device/samsung/dm3q" remote="chaptsand"/>
+  <project name="android_device_samsung_sm8550-common" path="device/samsung/sm8550-common" remote="samsung-8550-dev"/>
+  <project name="android_device_samsung_dm3q-kernel" path="device/samsung/dm3q-kernel" remote="chaptsand"/>
 
-  <project name="android_vendor_samsung_dm3q" path="vendor/samsung/dm3q" remote="samsung-8550"/>
-  <project name="android_vendor_samsung_sm8550-common" path="vendor/samsung/sm8550-common" remote="samsung-8550"/>
+  <project name="android_vendor_samsung_dm3q" path="vendor/samsung/dm3q" remote="chaptsand"/>
+  <project name="android_vendor_samsung_sm8550-common" path="vendor/samsung/sm8550-common" remote="chaptsand"/>
   
   <project name="LineageOS/android_kernel_qcom_sm8550" path="kernel/samsung/sm8550" revision="lineage-20"/>
   <project name="LineageOS/android_kernel_qcom_sm8550-modules" path="kernel/samsung/sm8550-modules" revision="lineage-20"/>
 
   <project name="LineageOS/android_hardware_samsung" path="hardware/samsung" revision="lineage-20" />
 </manifest>
+
 ' > ~/android/lineage/.repo/local_manifests/dm3q.xml
 
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
